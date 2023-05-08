@@ -26,11 +26,6 @@ class CompanyRepository implements CompanyRepositoryInterface
         $this->entityManager->flush();
     }
 
-    public function update(Company $entity): void
-    {
-
-    }
-
     public function delete(Company $entity): void
     {
         $this->entityManager->remove($entity);

@@ -75,4 +75,17 @@ class CompanyController extends AbstractController
 
         return new JsonResponse('Created new company successfully', Response::HTTP_CREATED);
     }
+
+    #[Route('/company/{id}', name: 'delete_company', methods: ['DELETE'])]
+    public function delete(int $id, Request $request): Response
+    {
+        $company = $this->companyService->get($id);
+
+        if (!$company) {
+            throw new NotFoundHttpException('Not found company with id: ' . $id);
+        }
+        $this->companyService->delete($company);
+
+        return new JsonResponse('', Response::HTTP_NO_CONTENT);
+    }
 }

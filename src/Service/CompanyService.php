@@ -42,4 +42,9 @@ class CompanyService
     {
         return $this->companyRepository->get($id);
     }
+
+    public function delete(Company $entity): void
+    {
+        $this->companyRepository->delete($entity);
+    }
 }
