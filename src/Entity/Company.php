@@ -17,23 +17,23 @@ class Company
     #[ORM\Column]
     private int $id;
 
-    #[ORM\Column(length: 100)]
+    #[ORM\Column(length: 100, nullable: false)]
     #[Assert\NotBlank]
     private string $name;
 
-    #[ORM\Column(length: 20)]
+    #[ORM\Column(length: 20, nullable: false)]
     #[Assert\NotBlank]
     private string $nip;
 
-    #[ORM\Column(length: 100)]
+    #[ORM\Column(length: 100, nullable: false)]
     #[Assert\NotBlank]
     private string $address;
 
-    #[ORM\Column(length: 20)]
+    #[ORM\Column(length: 20, nullable: false)]
     #[Assert\NotBlank]
     private string $city;
 
-    #[ORM\Column(length: 10)]
+    #[ORM\Column(length: 10, nullable: false)]
     #[Assert\NotBlank]
     private string $postalCode;
 

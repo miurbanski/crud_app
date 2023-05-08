@@ -16,15 +16,15 @@ class Employee
     #[ORM\Column]
     private int $id;
 
-    #[ORM\Column(length: 50)]
+    #[ORM\Column(length: 50, nullable: false)]
     #[Assert\NotBlank]
     private string $firstname;
 
-    #[ORM\Column(length: 50)]
+    #[ORM\Column(length: 50, nullable: false)]
     #[Assert\NotBlank]
     private string $lastname;
 
-    #[ORM\Column(length: 20)]
+    #[ORM\Column(length: 20, nullable: false)]
     #[Assert\NotBlank]
     #[Assert\Email(message: 'The email {{ value }} is not a valid email.')]
     private string $email;
