@@ -16,21 +16,31 @@ class CompanyService
         $this->companyRepository = $companyRepository;
     }
 
-    public function create(
+    public function prepare(
+        Company $company,
         string $name,
         string $nip,
         string $address,
         string $city,
         string $postalCode
-    ): void {
-        $company = new Company();
+    ): Company {
         $company->setName($name);
         $company->setNip($nip);
         $company->setAddress($address);
         $company->setCity($city);
         $company->setPostalCode($postalCode);
 
-        $this->companyRepository->save($company);
+        return $company;
+    }
+
+    public function saveEntity(
+        Company $company
+    ): void {
+        try {
+            $this->companyRepository->save($company);
+        } catch(\Exception $e) {
+            throw $e;
+        }
     }
 
     public function getAll(): array

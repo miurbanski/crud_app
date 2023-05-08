@@ -7,6 +7,7 @@ namespace App\Entity;
 use App\Repository\CompanyRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity]
 class Company
@@ -17,18 +18,23 @@ class Company
     private int $id;
 
     #[ORM\Column(length: 100)]
+    #[Assert\NotBlank]
     private string $name;
 
     #[ORM\Column(length: 20)]
+    #[Assert\NotBlank]
     private string $nip;
 
     #[ORM\Column(length: 100)]
+    #[Assert\NotBlank]
     private string $address;
 
     #[ORM\Column(length: 20)]
+    #[Assert\NotBlank]
     private string $city;
 
     #[ORM\Column(length: 10)]
+    #[Assert\NotBlank]
     private string $postalCode;
 
     #[ORM\OneToMany(targetEntity: Employee::class, mappedBy: "company", cascade: ["persist"], orphanRemoval: true)]
