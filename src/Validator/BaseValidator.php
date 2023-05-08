@@ -4,11 +4,7 @@ declare(strict_types=1);
 
 namespace App\Validator;
 
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
-use Doctrine\ORM\Mapping\Entity;
-use Symfony\Component\HttpFoundation\Response;
 
 class BaseValidator
 {
