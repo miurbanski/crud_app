@@ -31,6 +31,8 @@ class CompanyController extends AbstractController
     {
         $companies = $this->companyService->getAll();
 
+        $data = [];
+
         foreach ($companies as $company) {
             $data[] = [
                 'id' => $company->getId(),
@@ -115,11 +117,11 @@ class CompanyController extends AbstractController
         }
         $this->companyService->saveEntity($company);
 
-        return new JsonResponse('Updated employee successfully', Response::HTTP_OK);
+        return new JsonResponse('Updated company successfully', Response::HTTP_OK);
     }
 
     #[Route('/company/{id}', name: 'delete_company', methods: ['DELETE'])]
-    public function delete(int $id, Request $request): Response
+    public function delete(int $id): Response
     {
         $company = $this->companyService->get($id);
 

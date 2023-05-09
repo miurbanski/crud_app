@@ -8,14 +8,14 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class BaseValidator
 {
-    protected $validator;
+    protected ValidatorInterface $validator;
 
     public function __construct(ValidatorInterface $validator)
     {
         $this->validator = $validator;
     }
 
-    public function validate(object $entity)
+    public function validate(object $entity): array
     {
         $errors = $this->validator->validate($entity);
 

@@ -32,6 +32,8 @@ class EmployeeController extends AbstractController
     {
         $results = $this->employeeService->getAll();
 
+        $data = [];
+
         foreach ($results as $result) {
             $data[] = [
                 'id' => $result->getId(),
@@ -80,8 +82,6 @@ class EmployeeController extends AbstractController
         );
 
         $validation = $this->validator->validate($employee);
-        
-        //dd($validation);
 
         if (!empty($validation['validation_failed'])) {
             return new JsonResponse($validation, Response::HTTP_BAD_REQUEST);
@@ -122,7 +122,7 @@ class EmployeeController extends AbstractController
     }
 
     #[Route('/employee/{id}', name: 'delete_employee', methods: ['DELETE'])]
-    public function delete(int $id, Request $request): Response
+    public function delete(int $id): Response
     {
         $employee = $this->employeeService->get($id);
 
