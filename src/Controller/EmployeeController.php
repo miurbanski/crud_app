@@ -91,7 +91,7 @@ class EmployeeController extends AbstractController
         return new JsonResponse('Created new employee successfully', Response::HTTP_CREATED);
     }
 
-    #[Route('/employee/{id}', name: 'update_employee', methods: ['PUT'])]
+    #[Route('/employee/{id}', name: 'update_employee', methods: ['PATCH'])]
     public function update(int $id, Request $request): Response
     {
         $employee = $this->employeeService->get($id);
@@ -108,7 +108,7 @@ class EmployeeController extends AbstractController
             $data['lastname'] ?? '',
             $data['email'] ?? '',
             $data['telephone_number'] ?? '',
-            $data['company_id'] ?? ''
+            $data['company_id'] ?? null
         );
 
         $validation = $this->validator->validate($employee);

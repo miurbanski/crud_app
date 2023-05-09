@@ -33,7 +33,7 @@ class Employee
 
     #[ORM\ManyToOne(targetEntity: Company::class, inversedBy: "employees")]
     #[JoinTable(nullable: false)]
-    #[Assert\NotBlank]
+    #[Assert\NotNull]
     private Company $company;
 
     public function getId(): int

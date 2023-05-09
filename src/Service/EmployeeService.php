@@ -30,20 +30,24 @@ class EmployeeService
         string $lastname,
         string $email,
         string $telephoneNumber,
-        int $companyId
+        ?int $companyId
     ): Employee {
-        $company = $this->companyRepository->get($companyId);
-
-        if (!$company) {
-            throw new NotFoundHttpException('Not found company');
-        }
-
         $employee->setFirstname($firstname);
         $employee->setLastname($lastname);
         $employee->setEmail($email);
-        $employee->setTelephoneNumber($telephoneNumber);
-        $employee->setCompany($company);
 
+        if (!empty($telephoneNumber)) {
+            $employee->setTelephoneNumber($telephoneNumber);
+        }
+
+        if (!empty($companyId)) {
+            $company = $this->companyRepository->get($companyId);
+
+            if (!$company) {
+                throw new NotFoundHttpException('Not found company');
+            }
+            $employee->setCompany($company);
+        }
         return $employee;
     }
 
